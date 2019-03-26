@@ -1,6 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import jwt from 'jsonwebtoken';
+import cors from 'cors'
 
 import models from './models';
 import { refreshTokens } from './auth';
@@ -16,7 +17,7 @@ const port = process.env.PORT || 3400;
 const app = express();
 app.use(bodyParser.urlencoded({ extend: true }));
 app.use(bodyParser.json());
-
+app.use(cors('*'));
 
 // Setting up info about user in req
 const addUser = async (req, res, next) => {

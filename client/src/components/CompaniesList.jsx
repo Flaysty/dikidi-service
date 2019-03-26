@@ -1,8 +1,6 @@
 import React from 'react'
 import { Button, Card, Image } from 'semantic-ui-react'
 
-
-
 const items = [
     {
         "id": 95649,
@@ -54,7 +52,7 @@ const items = [
     }
 ]
 
-const CardExampleGroups = () => (
+const CompaniesList = () => (
     <Card.Group itemsPerRow={4} stackable>
         {items.map((item) => (
             <Card key={item.id}>
@@ -78,4 +76,4 @@ const CardExampleGroups = () => (
     </Card.Group>
 )
 
-export default CardExampleGroups
+export default CompaniesList

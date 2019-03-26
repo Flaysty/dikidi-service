@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, Divider, Grid, Header, Icon, Input, Image, Label, Menu, Table } from "semantic-ui-react";
 import { Helmet } from 'react-helmet'
 
-import CardExampleGroups from './CompaniesList'
+import CompaniesList from './CompaniesList'
 import AddStudioModal from './AddStudioModal';
 
 class Home extends Component {
@@ -120,7 +120,7 @@ class Home extends Component {
                 </Header>
               </Grid.Row>
               <Grid.Row textAlign="center">
-                <CardExampleGroups />
+                <CompaniesList />
               </Grid.Row>
               <Divider section hidden />
               <Grid.Row>
