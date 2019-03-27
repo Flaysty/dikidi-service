@@ -7,10 +7,6 @@ import { userLoginRequest } from '../../actions/loginActions'
 import { addFlashMessage } from '../../actions/flashMessages'
 
 class LoginPage extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const { userLoginRequest, addFlashMessage, history } = this.props;
     return (
