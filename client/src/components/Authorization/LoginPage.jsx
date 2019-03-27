@@ -6,14 +6,18 @@ import LoginForm from './LoginForm'
 import { userLoginRequest } from '../../actions/loginActions'
 
 class LoginPage extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
-    const { userLoginRequest } = this.props;
+    const { userLoginRequest, history } = this.props;
     return (
       <div className='login__wrapper'>
         <Helmet>
           <title>Авторизация</title>
         </Helmet>
-        <LoginForm userLoginRequest={userLoginRequest} />
+        <LoginForm userLoginRequest={userLoginRequest} history={history} />
       </div>
     )
   }
