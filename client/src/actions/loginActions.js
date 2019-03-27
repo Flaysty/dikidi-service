@@ -11,6 +11,14 @@ export function setCurrentUser(user) {
     }
 }
 
+export function logout() {
+    return dispatch => {
+      localStorage.removeItem('jwtToken');
+      setAuthorizationToken(false);
+      dispatch(setCurrentUser({}));
+    }
+  }
+
 export function userLoginRequest(userData) {
     return dispatch => {
         return axios.post('http://localhost:3400/user/login', userData)

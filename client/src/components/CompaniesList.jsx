@@ -53,7 +53,7 @@ const items = [
 ]
 
 const CompaniesList = () => (
-    <Card.Group itemsPerRow={4} stackable>
+    <Card.Group itemsPerRow={3} stackable>
         {items.map((item) => (
             <Card key={item.id}>
                 <Card.Content>

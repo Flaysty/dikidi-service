@@ -1,31 +1,19 @@
 import React, { Component } from "react";
-import { Button, Divider, Grid, Header, Icon, Input, Image, Label, Menu, Table } from "semantic-ui-react";
+import { Button, Divider, Grid, Header, Icon, Image, Menu, Table } from "semantic-ui-react";
 import { Helmet } from 'react-helmet'
 
+import NavigationBar from './NavigationBar'
 import CompaniesList from './CompaniesList'
 import AddStudioModal from './AddStudioModal';
 
 class Home extends Component {
   state = {
-    dropdownMenuStyle: {
-      display: "none"
-    },
     activeItem: 'home',
     openAddStudioModal: false,
   };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
-  handleToggleDropdownMenu = () => {
-    let newState = Object.assign({}, this.state);
-    if (newState.dropdownMenuStyle.display === "none") {
-      newState.dropdownMenuStyle = { display: "flex" };
-    } else {
-      newState.dropdownMenuStyle = { display: "none" };
-    }
-
-    this.setState(newState);
-  };
 
   toggleStudioModal = (e) => {
     if (e) {
@@ -41,48 +29,7 @@ class Home extends Component {
         <Helmet>
           <title>Панель управления</title>
         </Helmet>
-        <Grid padded className="tablet computer only">
-          <Menu borderless inverted fluid fixed="top">
-            <Menu.Item header as="a" style={{ fontSize: 22, padding: 10 }}>
-                <Image src="/assets/logo.png" size="mini" verticalAlign="top" /> Ananas69
-            </Menu.Item>
-            <Menu.Menu position="right">
-              <Menu.Item as="a">Главная</Menu.Item>
-              <Menu.Item as="a">Настройки</Menu.Item>
-            </Menu.Menu>
-          </Menu>
-        </Grid>
-        <Grid padded className="mobile only">
-          <Menu borderless inverted fluid fixed="top">
-            <Menu.Item header as="a">
-              Ananas69
-            </Menu.Item>
-            <Menu.Menu position="right">
-              <Menu.Item>
-                <Button
-                  basic
-                  inverted
-                  icon
-                  toggle
-                  onClick={this.handleToggleDropdownMenu}
-                >
-                  <Icon name="content" />
-                </Button>
-              </Menu.Item>
-            </Menu.Menu>
-            <Menu
-              borderless
-              fluid
-              inverted
-              vertical
-              style={this.state.dropdownMenuStyle}
-            >
-              <Menu.Item as="a">Главная</Menu.Item>
-              <Menu.Item as="a">Настройки</Menu.Item>
-              <Divider fitted />
-            </Menu>
-          </Menu>
-        </Grid>
+        <NavigationBar />
         <Grid padded>
           <Grid.Column
             tablet={3}
