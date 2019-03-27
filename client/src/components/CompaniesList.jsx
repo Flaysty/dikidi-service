@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Card, Image } from 'semantic-ui-react'
+import { Button, Table, Image, Icon } from 'semantic-ui-react'
 
 const items = [
     {
@@ -53,27 +53,47 @@ const items = [
 ]
 
 const CompaniesList = () => (
-    <Card.Group itemsPerRow={3} stackable>
-        {items.map((item) => (
-            <Card key={item.id}>
-                <Card.Content>
-                    <Image floated='right' size='mini' src={item.image} />
-                    <Card.Header dangerouslySetInnerHTML={{ __html: item.name }} />
-                    <Card.Description>{item.address}</Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <div className='ui two buttons'>
-                        <Button basic color='blue'>
-                            Подробнее
+    <Table celled padded>
+    <Table.Header>
+      <Table.Row>
+        <Table.HeaderCell singleLine></Table.HeaderCell>
+        <Table.HeaderCell>ID</Table.HeaderCell>
+        <Table.HeaderCell>Название</Table.HeaderCell>
+        <Table.HeaderCell>Адрес</Table.HeaderCell>
+        <Table.HeaderCell>Действия</Table.HeaderCell>
+      </Table.Row>
+    </Table.Header>
+
+    <Table.Body>
+    {items.map((item) => (
+        <Table.Row key={item.id}>
+            <Table.Cell>
+                <Image floated='right' size='mini' src={item.image} />
+            </Table.Cell>
+            <Table.Cell>
+                {item.id}
+            </Table.Cell>
+            <Table.Cell>
+                <span dangerouslySetInnerHTML={{ __html: item.name }}  />
+            </Table.Cell>
+            <Table.Cell>
+                {item.address}
+            </Table.Cell>
+            <Table.Cell>
+                <div className='ui two buttons'>
+                    <Button color='blue'>
+                        <Icon name='cog' className="left" />
                     </Button>
-                        <Button basic color='red'>
-                            Удалить
+                    <Button color='red'>
+                        <Icon name='delete' className="left" />
                     </Button>
-                    </div>
-                </Card.Content>
-            </Card>
-        ))}
-    </Card.Group>
+                </div>
+            </Table.Cell>
+
+        </Table.Row>
+      ))}
+    </Table.Body>
+  </Table>
 )
 
 export default CompaniesList

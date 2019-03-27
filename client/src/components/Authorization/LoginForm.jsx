@@ -27,7 +27,7 @@ class LoginForm extends React.Component {
           title: 'Авторизация',
           text: 'Успешная авторизация',
         });
-        this.props.history.push('/home')
+        this.props.history.push('/')
       }
       else {
         this.setState({ errors, isLoading: false })

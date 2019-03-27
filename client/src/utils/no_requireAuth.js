@@ -5,13 +5,13 @@ export default function(ComposedComponent) {
     class Authenticate extends React.Component {
         componentWillMount() {
             if (this.props.isAuthenticated) {
-                this.props.history.push('/home')
+                this.props.history.push('/')
             }
         }
 
         componentWillUpdate(nextProps) {
             if (nextProps.isAuthenticated) {
-                this.props.history.push('/home')
+                this.props.history.push('/')
             }
         }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid } from "semantic-ui-react";
+import { Grid, Header } from "semantic-ui-react";
 
 import AppLayout from '../AppLayout'
 
@@ -8,7 +8,9 @@ class SettingsPage extends React.Component {
         return (
             <AppLayout>
                 <Grid.Row textAlign="center">
-                    <h1>Настройки</h1>
+                    <Header dividing size="huge" as="h1">
+                        Настройки
+                    </Header>
                 </Grid.Row>
             </AppLayout>
         )

@@ -1,10 +1,8 @@
 import React, { Component } from "react";
 import { Button, Divider, Grid, Header, Icon, Table } from "semantic-ui-react";
 import { Helmet } from 'react-helmet'
-import { NavLink } from 'react-router-dom'
 
 import AppLayout from './AppLayout'
-import NavigationBar from './NavigationBar'
 import CompaniesList from './CompaniesList'
 import AddStudioModal from './AddStudioModal';
 
@@ -30,9 +28,9 @@ class Home extends Component {
         <Grid.Row>
           <Header dividing size="huge" as="h1">
             Студии
-                  <Button positive floated='right' onClick={this.toggleStudioModal}>
+            <Button positive floated='right' onClick={this.toggleStudioModal}>
               <Icon name="plus" /> Добавить студию
-                  </Button>
+            </Button>
           </Header>
         </Grid.Row>
         <Grid.Row textAlign="center">
@@ -42,7 +40,7 @@ class Home extends Component {
         <Grid.Row>
           <Header dividing size="huge" as="h1">
             Последние действия
-                </Header>
+          </Header>
         </Grid.Row>
         <Grid.Row>
           <Table singleLine striped selectable unstackable>
