@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import LoginForm from './LoginForm'
 import { userLoginRequest } from '../../actions/loginActions'
+import { addFlashMessage } from '../../actions/flashMessages'
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -11,16 +12,16 @@ class LoginPage extends React.Component {
   }
 
   render() {
-    const { userLoginRequest, history } = this.props;
+    const { userLoginRequest, addFlashMessage, history } = this.props;
     return (
       <div className='login__wrapper'>
         <Helmet>
           <title>Авторизация</title>
         </Helmet>
-        <LoginForm userLoginRequest={userLoginRequest} history={history} />
+        <LoginForm userLoginRequest={userLoginRequest} addFlashMessage={addFlashMessage} history={history} />
       </div>
     )
   }
 }
 
-export default connect(null, { userLoginRequest })(LoginPage);
+export default connect(null, { userLoginRequest, addFlashMessage })(LoginPage);

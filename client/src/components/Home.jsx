@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet'
 import NavigationBar from './NavigationBar'
 import CompaniesList from './CompaniesList'
 import AddStudioModal from './AddStudioModal';
+import FlashMessagesList from './Flash/FlashMessagesList'
 
 class Home extends Component {
   state = {
@@ -58,6 +59,9 @@ class Home extends Component {
             id="content"
           >
             <Grid padded>
+              <Grid.Row>
+                <FlashMessagesList />
+              </Grid.Row>
               <Grid.Row>
                 <Header dividing size="huge" as="h1">
                   Студии

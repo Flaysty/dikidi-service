@@ -23,6 +23,11 @@ class LoginForm extends React.Component {
     this.props.userLoginRequest({ username: this.state.username.toLowerCase(), password: this.state.password }).then(({ ok, errors }) => {
       if (ok) {
         this.setState({ isLoading: false })
+        this.props.addFlashMessage({
+          type: 'success',
+          title: 'Авторизация',
+          text: 'Успешная авторизация',
+        });
         this.props.history.push('/home')
       }
       else {

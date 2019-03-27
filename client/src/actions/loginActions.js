@@ -13,11 +13,12 @@ export function setCurrentUser(user) {
 
 export function logout() {
     return dispatch => {
-      localStorage.removeItem('jwtToken');
-      setAuthorizationToken(false);
-      dispatch(setCurrentUser({}));
+        localStorage.removeItem('token');
+        localStorage.removeItem('refreshToken');
+        setAuthorizationToken(false);
+        dispatch(setCurrentUser({}));
     }
-  }
+}
 
 export function userLoginRequest(userData) {
     return dispatch => {
@@ -29,7 +30,8 @@ export function userLoginRequest(userData) {
                     setAuthorizationToken(token, refreshToken);
                     dispatch(setCurrentUser(jwt.decode(token)))
                     return new Promise((resolve) => {
-                        resolve({ ok: true })});
+                        resolve({ ok: true })
+                    });
                 }
                 else {
                     const err = {};
@@ -37,7 +39,8 @@ export function userLoginRequest(userData) {
                         err[`${path}Error`] = message;
                     });
                     return new Promise((resolve) => {
-                        resolve({ ok: false, errors: err })});
+                        resolve({ ok: false, errors: err })
+                    });
                 }
             })
     }

@@ -29,6 +29,7 @@ class NavigationBar extends React.Component {
     }
 
     render() {
+        const { isAuthenticated } = this.props.auth;
         return (
             <>
                 <Grid padded className="tablet computer only">
@@ -37,7 +38,7 @@ class NavigationBar extends React.Component {
                             <Image src="/assets/logo.png" size="mini" verticalAlign="top" /> Ananas69
                         </Menu.Item>
                         <Menu.Menu position="right">
-                            <Menu.Item as="a" onClick={this.props.logout}>Выйти</Menu.Item>
+                            {isAuthenticated && <Menu.Item as="a" onClick={this.props.logout}>Выйти</Menu.Item>}
                         </Menu.Menu>
                     </Menu>
                 </Grid>
@@ -66,7 +67,7 @@ class NavigationBar extends React.Component {
                             vertical
                             style={this.state.dropdownMenuStyle}
                         >
-                            <Menu.Item as="a" onClick={this.props.logout}>Выйти</Menu.Item>
+                            {isAuthenticated && <Menu.Item as="a" onClick={this.props.logout}>Выйти</Menu.Item>}
                             <Divider fitted />
                         </Menu>
                     </Menu>
