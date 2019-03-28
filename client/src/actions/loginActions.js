@@ -2,12 +2,18 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken'
 
 import setAuthorizationToken from '../utils/setAuthorizationToken'
-import { SET_CURRENT_USER } from './types'
+import { SET_CURRENT_USER, RESET } from './types'
 
 export function setCurrentUser(user) {
     return {
         type: SET_CURRENT_USER,
         ...user
+    }
+}
+
+export function reset() {
+    return {
+        type: RESET,
     }
 }
 
@@ -17,6 +23,7 @@ export function logout() {
         localStorage.removeItem('refreshToken');
         setAuthorizationToken(false);
         dispatch(setCurrentUser({}));
+        dispatch(reset({}));
     }
 }
 

@@ -1,6 +1,6 @@
 import findIndex from 'lodash/findIndex'
 
-import { ADD_DIKIDI_ACCOUNT, FETCH_DIKIDI_ACCOUNT } from '../actions/types'
+import { ADD_DIKIDI_ACCOUNT, FETCH_DIKIDI_ACCOUNT, RESET } from '../actions/types'
 
 export default function(state = { accounts: [] }, action = {}) {
     switch(action.type) {
@@ -14,6 +14,8 @@ export default function(state = { accounts: [] }, action = {}) {
                 ...state,
                 accounts: action.accounts
             };
+        case RESET:
+            return { accounts: [] };
         default: return state;
     }
 }

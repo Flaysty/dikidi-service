@@ -1,7 +1,7 @@
 import shortid from 'shortid'
 import findIndex from 'lodash/findIndex'
 
-import { ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE } from '../actions/types'
+import { ADD_FLASH_MESSAGE, DELETE_FLASH_MESSAGE, RESET } from '../actions/types'
 
 export default function(state = [], action = {}) {
     switch(action.type) {
@@ -23,6 +23,8 @@ export default function(state = [], action = {}) {
                     ...state.slice(index + 1)
                 ]
             }
+        case RESET:
+            return [];
         default: return state;
     }
 }

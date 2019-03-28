@@ -18,7 +18,7 @@ class AddStudioModal extends React.Component {
         e.preventDefault();
         this.setState({ errors: {}, isLoading: true });
         const { account_id, studio, studioKey } = this.state;
-        this.props.addStudio({ account_id, studio, studioKey }).then(({ ok, error }) => {
+        this.props.addStudio({ account_id, studio, studioKey }).then(({ ok, error, studio }) => {
             if (ok) {
                 this.props.addFlashMessage({
                     type: 'success',
@@ -41,7 +41,7 @@ class AddStudioModal extends React.Component {
                 if (ok) {
                     const accountsOptions = studios.data.map(studio => ({
                         key: studio.id,
-                        text: `${studio.address} (id: ${studio.id})`,
+                        text: `${studio.name} (id: ${studio.id})`,
                         value: JSON.stringify(studio),
                     }))
                     this.setState({ studios: accountsOptions, account_id: key })
