@@ -16,9 +16,8 @@ exports.authenticate = async (req, res) => {
         });
         const { error, data, message } = await response.json();
         if (error) {
-            return res.status(500).json({
-                error,
-                message
+            return res.status(200).json({
+                error: message
             });
         }
         const exists = await models.Account.findOne({ where: { uid: data.user_id } });
@@ -36,15 +35,15 @@ exports.authenticate = async (req, res) => {
                 account
             })
         }
-        return res.status(400).json({
+        return res.status(200).json({
             message: 'Error',
-            errors: 'You have already authorized this account'
+            error: 'Вы уже авторизовали этот аккаунт ранее'
         });
         
     } catch (error) {
         return res.status(400).send({
             message: 'Error',
-            errors: formatErrors(error, models),
+            error: formatErrors(error, models),
         });
     }
 }

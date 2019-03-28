@@ -1,14 +1,13 @@
 import React from 'react'
 import { Button, Table, Image, Icon } from 'semantic-ui-react'
 
-const CompaniesList = ({ list }) => (
+const AccountsList = ({ list }) => (
     <Table celled padded>
     <Table.Header>
       <Table.Row>
-        <Table.HeaderCell singleLine></Table.HeaderCell>
         <Table.HeaderCell>ID</Table.HeaderCell>
-        <Table.HeaderCell>Название</Table.HeaderCell>
-        <Table.HeaderCell>Адрес</Table.HeaderCell>
+        <Table.HeaderCell>Логин</Table.HeaderCell>
+        <Table.HeaderCell>Имя</Table.HeaderCell>
         <Table.HeaderCell>Действия</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
@@ -16,19 +15,16 @@ const CompaniesList = ({ list }) => (
     <Table.Body>
     {list.map((item) => (
         <Table.Row key={item.id}>
-            <Table.Cell>
-                <Image floated='right' size='mini' src={item.image} />
+            <Table.Cell collapsing>
+                {item.uid}
             </Table.Cell>
             <Table.Cell>
-                {item.id}
+                {item.username}
             </Table.Cell>
             <Table.Cell>
-                <span dangerouslySetInnerHTML={{ __html: item.name }}  />
+                {item.name}
             </Table.Cell>
-            <Table.Cell>
-                {item.address}
-            </Table.Cell>
-            <Table.Cell>
+            <Table.Cell collapsing>
                 <div className='ui two buttons'>
                     <Button color='blue'>
                         <Icon name='cog' className="left" />
@@ -45,4 +41,4 @@ const CompaniesList = ({ list }) => (
   </Table>
 )
 
-export default CompaniesList
+export default AccountsList

@@ -31,3 +31,8 @@ exports.signin = async (req, res) => {
     const result = await tryLogin(req.body.username, req.body.password, models, SECRET, SECRET2);
     return res.status(200).send(result);
 }
+
+exports.getAccountsList = async (req, res) => {
+    const result = await models.Account.findAll({ where: { userId: req.user.id } })
+    return res.status(200).send(result);
+}

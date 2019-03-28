@@ -23,7 +23,6 @@ export default function(state = [], action = {}) {
                     ...state.slice(index + 1)
                 ]
             }
-            retu
         default: return state;
     }
 }

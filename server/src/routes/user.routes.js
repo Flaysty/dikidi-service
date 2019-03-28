@@ -8,4 +8,6 @@ module.exports = (app) => {
         .post(userController.signup)
     app.route('/user/login')
         .post(userController.signin)
+    app.route('/user/accounts')
+        .get(authenticated, userController.getAccountsList)
 }
