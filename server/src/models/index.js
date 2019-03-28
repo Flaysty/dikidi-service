@@ -13,6 +13,7 @@ sequelize.authenticate();
 
 const models = {
   User: sequelize.import('./user.model.js'),
+  Account: sequelize.import('./account.model.js'),
   Studio: sequelize.import('./studio.model.js'),
 };
 

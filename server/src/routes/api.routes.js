@@ -1,9 +1,7 @@
-import express from 'express'
+import apiController from '../controllers/api.controller.js'
+import authenticated from '../middlewares/authenticated'
 
-const router = express.Router();
-
-router.get('/auth', (req, res) => {
-    res.send('Hello World');
-})
-
-module.exports = router;
+module.exports = (app) => {
+    app.route('/api/authenticate')
+        .post(authenticated, apiController.authenticate)
+}

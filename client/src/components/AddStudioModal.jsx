@@ -14,8 +14,15 @@ const AddStudioModal = ({ open, onClose }) => (
             <p>Выберите студию для добавления</p>
         </Modal.Content>
         <Modal.Actions>
-            <Button negative>Отмена</Button>
-            <Button positive icon='checkmark' labelPosition='right' content='Добавить' />
+            <Button
+                negative
+                onClick={(e) => {
+                    onClose(e);
+                }}
+            >
+                Отмена
+            </Button>
+            <Button positive icon='checkmark' labelPosition='right' content='Авторизовать' />
         </Modal.Actions>
     </Modal>
 )
