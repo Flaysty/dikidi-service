@@ -83,3 +83,31 @@ exports.getStudios = async (req, res) => {
     const result = await models.Studio.findAll({ where: { userId: req.user.id } })
     return res.status(200).send(result);
 }
+
+exports.deleteStudio = async (req, res) => {
+    const response = await models.Studio.destroy({ where: { id: req.query.id } });
+    if (response) {
+        return res.status(200).send({
+            message: 'Studio deleted',
+            id: response,
+        });
+    }
+    else {
+        return res.status(200).send({ error: `Не удалось удалить студию ${req.query.id}` });
+    }
+}
+
+exports.deleteAccount = async (req, res) => {
+    const studios = await models.Studio.destroy({ where: { accountId: req.query.id } });
+    const response = await models.Account.destroy({ where: { id: req.query.id } });
+    console.log(studios)
+    if (response && studios) {
+        return res.status(200).send({
+            message: 'Account deleted',
+            id: response,
+        });
+    }
+    else {
+        return res.status(200).send({ error: `Не удалось удалить аккант ${req.query.id}` });
+    }
+}

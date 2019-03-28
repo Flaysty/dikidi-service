@@ -6,9 +6,10 @@ import { connect } from 'react-redux'
 import AppLayout from '../AppLayout'
 import CompaniesList from './CompaniesList'
 import AddStudioModal from './AddStudioModal';
-import { addStudio } from '../../actions/studioActions'
+import { addStudio, deleteStudio } from '../../actions/studioActions'
 import { fetchAccounts, fetchStudios } from '../../actions/fetchActions'
 import { getStudios } from '../../actions/apiActions';
+import { addFlashMessage } from '../../actions/flashMessages'
 
 class Home extends Component {
     state = {
@@ -16,13 +17,15 @@ class Home extends Component {
     };
 
     componentDidMount() {
-        this.props.fetchAccounts();
         this.props.fetchStudios();
     }
 
     toggleStudioModal = (e) => {
         if (e) {
             e.preventDefault();
+        }
+        if(!this.state.openAddStudioModal) {
+            this.props.fetchAccounts();
         }
         this.setState({ openAddStudioModal: !this.state.openAddStudioModal });
     }
@@ -42,7 +45,7 @@ class Home extends Component {
                     </Header>
                 </Grid.Row>
                 <Grid.Row textAlign="center">
-                    <CompaniesList list={this.props.studio} />
+                    <CompaniesList deleteStudio={this.props.deleteStudio} list={this.props.studio} />
                 </Grid.Row>
                 <Divider section hidden />
                 <Grid.Row>
@@ -72,7 +75,7 @@ class Home extends Component {
                         </Table.Body>
                     </Table>
                 </Grid.Row>
-                <AddStudioModal open={this.state.openAddStudioModal} onClose={this.toggleStudioModal} addStudio={this.props.addStudio} accounts={this.props.accounts} getStudios={this.props.getStudios} />
+                <AddStudioModal open={this.state.openAddStudioModal} onClose={this.toggleStudioModal} addStudio={this.props.addStudio} accounts={this.props.accounts} getStudios={this.props.getStudios} addFlashMessage={this.props.addFlashMessage} />
             </AppLayout>
         );
     }
@@ -85,4 +88,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { addStudio, fetchAccounts, fetchStudios, getStudios })(Home);
+export default connect(mapStateToProps, { addStudio, deleteStudio, fetchAccounts, fetchStudios, getStudios, addFlashMessage })(Home);

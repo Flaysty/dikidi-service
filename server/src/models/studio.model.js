@@ -22,7 +22,7 @@ export default (sequelize, DataTypes) => {
         Studio.belongsTo(models.Account, {
             foreignKey: {
                 name: 'accountId',
-                field: 'accound_id',
+                field: 'account_id',
             },
         });
         // 1:M

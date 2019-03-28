@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Table, Image, Icon } from 'semantic-ui-react'
 
-const AccountsList = ({ list }) => (
+const AccountsList = ({ list, deleteAccount }) => (
     <Table celled padded>
     <Table.Header>
       <Table.Row>
@@ -29,7 +29,7 @@ const AccountsList = ({ list }) => (
                     <Button color='blue'>
                         <Icon name='cog' className="left" />
                     </Button>
-                    <Button color='red'>
+                    <Button color='red' onClick={deleteAccount.bind(null, item.id)}>
                         <Icon name='delete' className="left" />
                     </Button>
                 </div>

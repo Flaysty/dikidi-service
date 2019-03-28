@@ -22,9 +22,10 @@ class AddStudioModal extends React.Component {
             if (ok) {
                 this.props.addFlashMessage({
                     type: 'success',
-                    title: 'Студия добавлениа авторизован',
+                    title: 'Студия добавлена и авторизована',
                     text: 'Успешное добавление и прохождение интеграции студии',
                 });
+                this.setState({ studioKey: '' });
                 this.props.onClose();
             }
             else {

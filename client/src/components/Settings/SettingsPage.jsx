@@ -7,6 +7,7 @@ import AddAccountModal from './AddAccountModal';
 import { addFlashMessage } from '../../actions/flashMessages';
 import { authorizeAccount } from '../../actions/apiActions'
 import { fetchAccounts } from '../../actions/fetchActions'
+import { deleteAccount } from '../../actions/accountActions'
 import AccountsList from './AccountsList';
 
 class SettingsPage extends React.Component {
@@ -36,7 +37,7 @@ class SettingsPage extends React.Component {
                 </Grid.Row>
                 <Grid.Row>
                     {this.props.accounts ? (
-                        <AccountsList list={this.props.accounts} />
+                        <AccountsList deleteAccount={this.props.deleteAccount} list={this.props.accounts} />
                     ) : null}
                 </Grid.Row>
                 <AddAccountModal open={this.state.openAddAccountModal} onClose={this.toggleAccountModal} authorizeAccount={authorizeAccount} addFlashMessage={addFlashMessage} />
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps, { authorizeAccount, addFlashMessage, fetchAccounts })(SettingsPage);
+export default connect(mapStateToProps, { authorizeAccount, addFlashMessage, fetchAccounts, deleteAccount })(SettingsPage);

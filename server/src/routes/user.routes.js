@@ -10,7 +10,9 @@ module.exports = (app) => {
         .post(userController.signin)
     app.route('/user/accounts')
         .get(authenticated, userController.getAccountsList)
+        .delete(authenticated, userController.deleteAccount)
     app.route('/user/studios')
         .get(authenticated, userController.getStudios)
         .post(authenticated, userController.addStudio)
+        .delete(authenticated, userController.deleteStudio)
 }
