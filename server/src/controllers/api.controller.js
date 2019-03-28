@@ -16,7 +16,7 @@ exports.authenticate = async (req, res) => {
         });
         const { error, data, message } = await response.json();
         if (error) {
-            return res.status(401).json({
+            return res.status(500).json({
                 error,
                 message
             });
@@ -36,7 +36,7 @@ exports.authenticate = async (req, res) => {
                 account
             })
         }
-        return res.status(401).json({
+        return res.status(400).json({
             message: 'Error',
             errors: 'You have already authorized this account'
         });
@@ -45,6 +45,31 @@ exports.authenticate = async (req, res) => {
         return res.status(400).send({
             message: 'Error',
             errors: formatErrors(error, models),
+        });
+    }
+}
+
+exports.getCompaniesList = async (req, res) => {
+    try {
+        const { token } = req.query;
+        const response = await fetch(`https://beauty.dikidi.ru/api/owner/user/projects/?token=${token}`, {
+            method: 'GET',
+        });
+        const { error, data, message } = await response.json();
+        if (error > 0) {
+            return res.status(400).json({
+                error,
+                message
+            });
+        }
+        return res.status(200).send({
+            message: 'List of companies',
+            data
+        })
+    } catch (error) {
+        return res.status(400).send({
+            message: 'Error',
+            ...error,
         });
     }
 }

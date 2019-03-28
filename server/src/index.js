@@ -46,7 +46,7 @@ require('./routes/user.routes.js')(app, models);
 require('./routes/api.routes.js')(app, models);
 
 
-models.sequelize.sync({  force: true }).then(() => {
+models.sequelize.sync({}).then(() => {
   app.listen(port, (err) => {
     if (err) throw err;
     // eslint-disable-next-line no-console
