@@ -10,4 +10,7 @@ module.exports = (app) => {
         .post(userController.signin)
     app.route('/user/accounts')
         .get(authenticated, userController.getAccountsList)
+    app.route('/user/studios')
+        .get(authenticated, userController.getStudios)
+        .post(authenticated, userController.addStudio)
 }

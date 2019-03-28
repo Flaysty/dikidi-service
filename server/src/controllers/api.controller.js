@@ -28,7 +28,8 @@ exports.authenticate = async (req, res) => {
                 name: data.name,
                 password: password,
                 token: data.token,
-                userId: req.user.id
+                userId: req.user.id,
+                pKey: req.body.apiKey
             });
             return res.status(200).send({
                 message: 'Account successfully authorized',

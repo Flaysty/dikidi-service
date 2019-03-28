@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import LoginPage from '../components/Authorization/LoginPage';
-import Home from '../components/Home';
+import Home from '../components/Home/HomePage';
 import SettingsPage from '../components/Settings/SettingsPage';
 import requireAuth from '../utils/requireAuth'
 import noAuthRequire from '../utils/no_requireAuth'

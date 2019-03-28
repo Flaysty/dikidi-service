@@ -15,6 +15,9 @@ export default (sequelize, DataTypes) => {
         token: {
             type: DataTypes.STRING,
         },
+        pKey: {
+            type: DataTypes.STRING,
+        },
     });
 
     Account.associate = (models) => {

@@ -27,3 +27,21 @@ export function authorizeAccount(accountData) {
             })
     }
 }
+
+export function getStudios(token) {
+    return dispatch => {
+        return axios.get(`http://localhost:3400/api/company?token=${token}`)
+            .then(({ data }) => {
+                if (!data.length > 0) {
+                    return new Promise((resolve) => {
+                        resolve({ ok: true, studios: data})
+                    });
+                }
+                else {
+                    return new Promise((resolve) => {
+                        resolve({ ok: false, error: 'Что-то пошло не так' })
+                    });
+                }
+            })
+    }
+}

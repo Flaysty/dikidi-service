@@ -14,9 +14,9 @@ const CompaniesList = ({ list }) => (
     </Table.Header>
 
     <Table.Body>
-    {list.map((item) => (
+    {list && list.map((item) => (
         <Table.Row key={item.id}>
-            <Table.Cell>
+            <Table.Cell collapsing>
                 <Image floated='right' size='mini' src={item.image} />
             </Table.Cell>
             <Table.Cell>
@@ -28,7 +28,7 @@ const CompaniesList = ({ list }) => (
             <Table.Cell>
                 {item.address}
             </Table.Cell>
-            <Table.Cell>
+            <Table.Cell collapsing>
                 <div className='ui two buttons'>
                     <Button color='blue'>
                         <Icon name='cog' className="left" />
