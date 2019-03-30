@@ -67,6 +67,7 @@ class AddAccountModal extends React.Component {
                         <Divider />
                         <Form.Field>
                             <Button
+                                type="button"
                                 negative
                                 onClick={(e) => {
                                     this.props.onClose(e);
