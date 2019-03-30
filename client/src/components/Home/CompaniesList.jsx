@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Table, Image, Icon } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
 
 const CompaniesList = ({ list, deleteStudio }) => (
     <Table celled padded>
@@ -29,14 +30,14 @@ const CompaniesList = ({ list, deleteStudio }) => (
                 {item.address}
             </Table.Cell>
             <Table.Cell collapsing>
-                <div className='ui two buttons'>
-                    <Button color='blue'>
-                        <Icon name='cog' className="left" />
+                <Link to={`/studio/${item.id}`}>
+                    <Button as="span" color='blue' className="padding_button" >
+                        <Icon name='cog' className="left no_margin_button" />
                     </Button>
-                    <Button onClick={deleteStudio.bind(null, item.id)} color='red'>
-                        <Icon name='delete' className="left" />
-                    </Button>
-                </div>
+                </Link>
+                <Button onClick={deleteStudio.bind(null, item.id)} color='red' className="padding_button" >
+                    <Icon name='delete' className="left no_margin_button" />
+                </Button>
             </Table.Cell>
 
         </Table.Row>

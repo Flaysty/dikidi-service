@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Button, Divider, Grid, Header, Icon, Image, Menu, Table } from "semantic-ui-react";
+import { Button, Divider, Grid, Icon, Image, Menu } from "semantic-ui-react";
 
 import { logout } from '../actions/loginActions';
 

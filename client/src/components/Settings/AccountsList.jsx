@@ -25,14 +25,12 @@ const AccountsList = ({ list, deleteAccount }) => (
                 {item.name}
             </Table.Cell>
             <Table.Cell collapsing>
-                <div className='ui two buttons'>
-                    <Button color='blue'>
-                        <Icon name='cog' className="left" />
-                    </Button>
-                    <Button color='red' onClick={deleteAccount.bind(null, item.id)}>
-                        <Icon name='delete' className="left" />
-                    </Button>
-                </div>
+                <Button color='blue' className="padding_button">
+                    <Icon name='cog' className="left no_margin_button" />
+                </Button>
+                <Button color='red' onClick={deleteAccount.bind(null, item.id)} className="padding_button" >
+                    <Icon name='delete' className="left no_margin_button" />
+                </Button>
             </Table.Cell>
 
         </Table.Row>

@@ -15,6 +15,7 @@ const models = {
   User: sequelize.import('./user.model.js'),
   Account: sequelize.import('./account.model.js'),
   Studio: sequelize.import('./studio.model.js'),
+  Option: sequelize.import('./option.model.js'),
 };
 
 Object.keys(models).forEach((modelName) => {

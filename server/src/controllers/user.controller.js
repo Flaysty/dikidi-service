@@ -111,3 +111,76 @@ exports.deleteAccount = async (req, res) => {
         return res.status(200).send({ error: `Не удалось удалить аккант ${req.query.id}` });
     }
 }
+
+exports.getStudioOptions = async (req, res) => {
+    const result = await models.Option.findAll({ where: { studioId: req.query.id } })
+    return res.status(200).send({
+        options: result
+    });
+}
+
+exports.addStudioOptions = async (req, res) => {
+    try {
+        const { days, when, text, studioId } = req.body;
+        const optionTime = days == 0 ? null : when;
+        const result = await models.Option.create({
+            counter: 0,
+            days,
+            when: optionTime,
+            state: true,
+            text,
+            studioId,
+        });
+        return res.status(200).send({
+            message: 'Option saved',
+            option: result,
+        });
+    } catch (err) {
+        console.log(err)
+        return res.status(400).send({
+            error: formatErrors(err, models),
+        });
+    }
+}
+
+exports.editStudioOptions = async (req, res) => {
+    try {
+        const { id, days, when, text, state, studioId } = req.body;
+        const optionTime = days == 0 ? null : when;
+        const result = await models.Option.update(
+            {
+                days,
+                when: optionTime,
+                state,
+                text,
+                studioId,
+            },
+            {
+                where: { id, studioId }
+            }
+        );
+        const option = await models.Option.findOne({ where: { id } });
+        return res.status(200).send({
+            message: 'Option edited',
+            option,
+        });
+    } catch (err) {
+        console.log(err)
+        return res.status(400).send({
+            error: formatErrors(err, models),
+        });
+    }
+}
+
+exports.deleteStudioOption = async (req, res) => {
+    const response = await models.Option.destroy({ where: { id: req.query.id } });
+    if (response) {
+        return res.status(200).send({
+            message: 'Option deleted',
+            id: response,
+        });
+    }
+    else {
+        return res.status(200).send({ error: `Не удалось удалить студию ${req.query.id}` });
+    }
+}

@@ -105,3 +105,11 @@ body {
   padding: 10px 0px 0px 0px;
 font-size: 12px !important;  
 }
+
+.no_margin_button {
+  margin: 0px !important;
+}
+
+.padding_button {
+  padding: 5px !important;
+}

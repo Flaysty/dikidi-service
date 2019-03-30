@@ -15,4 +15,9 @@ module.exports = (app) => {
         .get(authenticated, userController.getStudios)
         .post(authenticated, userController.addStudio)
         .delete(authenticated, userController.deleteStudio)
+    app.route('/user/studios/options')
+        .get(authenticated, userController.getStudioOptions)
+        .post(authenticated, userController.addStudioOptions)
+        .put(authenticated, userController.editStudioOptions)
+        .delete(authenticated, userController.deleteStudioOption)
 }
